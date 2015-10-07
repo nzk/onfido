@@ -4,6 +4,10 @@ module Onfido
 
     include Requestable
 
+    def initialize(api_key)
+      @api_key = api_key
+    end
+
     def url_for(path)
       Onfido.endpoint + path
     end
@@ -26,7 +30,7 @@ module Onfido
 
     def headers
       {
-        'Authorization' => "Token token=#{Onfido.api_key}",
+        'Authorization' => "Token token=#{@api_key}",
         'Accept' => "application/json"
       }
     end
